@@ -9,6 +9,7 @@ import * as bcrypt from 'bcrypt-nodejs';
 
 import { IUser } from '../interfaces/models/user';
 import mongoose from '../providers/Database';
+import {Schema} from 'mongoose';
 
 // Create the model schema & register your custom methods here
 export interface IUserModel extends IUser, mongoose.Document {
@@ -19,7 +20,7 @@ export interface IUserModel extends IUser, mongoose.Document {
 }
 
 // Define the User Schema
-export const UserSchema = new mongoose.Schema({
+export const UserSchema: Schema<IUserModel> = new mongoose.Schema({
 	email: { type: String, unique: true },
 	password: { type: String },
 	passwordResetToken: { type: String },
